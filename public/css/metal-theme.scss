@@ -1,0 +1,51 @@
+.chat-container {
+  padding-top: calc(1rem - 1px);
+
+  .status {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 95vw;
+    height: 1rem;
+    border-bottom-width: 0;
+  }
+
+  .chat {
+    border-top: 1px solid #416371;
+    background-color: transparent;
+    margin-bottom: 0.5rem;
+    border-bottom: none;
+
+    .chat-name {
+      color: #FF9621;
+      background: linear-gradient(to bottom, #7f487d, #2d3c57);
+      margin-left: -3px;
+      border: 1px solid #416371;
+      border-top-width: 0;
+      border-left-width: 0;
+      cursor: pointer;
+      &:hover {
+        background: linear-gradient(to bottom, #2d3c57, #7f487d);
+      }
+
+
+      a {
+        color: lighten(#007bff, 20%);
+      }
+    }
+
+    .chat-text {
+      color: #CCCCCC;
+    }
+  }
+}
+
+.form-control {
+  background-color: transparent;
+  color: #CCCCCC;
+}
+
+.input-group-text {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #CCCCCC;
+}
