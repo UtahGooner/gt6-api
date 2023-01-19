@@ -9,7 +9,7 @@ const bodyParser = require("body-parser");
 const compression = require('compression');
 const helmet = require("helmet");
 const WebSocket = require('ws');
-const {getGT6, getGT6wss} = require('./api/gt6/index.js');
+const {getGT6} = require('./api/gt6/index.js');
 const {wsHandler} = require("./api/gt6");
 
 if (!process.env.SERVER_PORT) {
@@ -22,15 +22,18 @@ const app = express();
 
 app.set('trust proxy', 'loopback');
 app.use(helmet({
-   crossOriginEmbedderPolicy: false,
+    crossOriginEmbedderPolicy: false,
 }));
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}));
 app.use(helmet.contentSecurityPolicy({
-  directives: {
-      frameAncestors: ['https://*.progulus.com', 'https://progulus.com', 'http://localhost:8080/'],
-      upgradeInsecureRequests: null,
-      connectSrc: null
-  }
+    directives: {
+        frameAncestors: ['https://*.progulus.com', 'https://progulus.com', 'http://localhost:8000/'],
+        upgradeInsecureRequests: null,
+        connectSrc: null,
+        "img-src": ["'self'", "progulus.com"],
+        "script-src": ["'self'", "progulus.com"],
+
+    }
 }))
 
 app.use(compression());

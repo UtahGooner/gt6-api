@@ -9,7 +9,8 @@ html
 
     body(class=bodyClassName)
         div#app
-        script window.gt6Params = {user: "#{gt6params.user}", id: #{gt6params.id}};
+        div#app-user(data-user=gt6params)
+        //script window.gt6Params = {user: "#{gt6params.user}", id: #{gt6params.id}};
         script(src="/js" + main)
         script(src="/js" + vendor)
 
