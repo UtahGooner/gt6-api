@@ -7,7 +7,7 @@ import bodyParser from "body-parser";
 import compression from 'compression';
 import helmet from "helmet";
 import WebSocket from 'ws';
-import {getGT6, getGT6wss, getMainJS, getVendorsJS} from './api/gt6';
+import {getGT6, getMainJS, getVendorsJS} from './api/gt6';
 import {wsHandler} from "./api/gt6";
 
 const debug = Debug('gutenprog:index');
