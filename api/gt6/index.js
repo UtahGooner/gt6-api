@@ -1,7 +1,7 @@
 import Debug from "debug";
 import fs from 'node:fs/promises'
 import path from 'node:path';
-import validator from "validator/es";
+import validator from "validator";
 import {getChat, broadcastChat, saveChat} from './chat.js';
 
 const debug = Debug('gutenprog:api:gt6');

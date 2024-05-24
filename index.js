@@ -8,8 +8,7 @@ import bodyParser from "body-parser";
 import compression from 'compression';
 import helmet from "helmet";
 import WebSocket from 'ws';
-import {getGT6, getMainJS, getVendorsJS} from './api/gt6';
-import {wsHandler} from "./api/gt6";
+import {getGT6, getMainJS, getVendorsJS, wsHandler} from './api/gt6/index.js';
 
 const debug = Debug('gutenprog:index');
 
@@ -22,18 +21,18 @@ const app = express();
 
 app.set('trust proxy', 'loopback');
 app.use(helmet({
-   crossOriginEmbedderPolicy: false,
+    crossOriginEmbedderPolicy: false,
 }));
 app.use(helmet.crossOriginResourcePolicy({policy: 'cross-origin'}));
 app.use(helmet.contentSecurityPolicy({
-  directives: {
-      frameAncestors: ['https://*.progulus.com', 'https://progulus.com', 'http://localhost:8000/', 'http://*.progulus.com', 'http://progulus.com'],
-      upgradeInsecureRequests: null,
-      connectSrc: null,
-      "img-src": ["'self'", "progulus.com"],
-      "script-src": ["'self'", "progulus.com"],
+    directives: {
+        frameAncestors: ['https://*.progulus.com', 'https://progulus.com', 'http://localhost:8000/', 'http://*.progulus.com', 'http://progulus.com'],
+        upgradeInsecureRequests: null,
+        connectSrc: null,
+        "img-src": ["'self'", "progulus.com"],
+        "script-src": ["'self'", "progulus.com"],
 
-  }
+    }
 }))
 
 app.use(compression());
