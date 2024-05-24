@@ -1,5 +1,7 @@
-const {pool} = require('./connection')
-const debug = require('debug')('gutenprog:api:gt6:chat');
+import Debug from "debug";
+import {pool} from './connection.js'
+
+const debug = Debug('gutenprog:api:gt6:chat');
 
 const loadChat = async ({offset = 0, limit = 150} = {}) => {
     try {
@@ -22,7 +24,7 @@ const loadChat = async ({offset = 0, limit = 150} = {}) => {
     }
 };
 
-const saveChat = async ({username, tagname, url, chattext}) => {
+export const saveChat = async ({username, tagname, url, chattext}) => {
     try {
         const query = `INSERT INTO chats (username, tagname, url, chattext)
                        VALUES (:username, :tagname, :url, :chattext)`;
@@ -36,7 +38,7 @@ const saveChat = async ({username, tagname, url, chattext}) => {
 };
 
 
-const getChat = async ({offset = 0, limit = 150} = {}) => {
+export const getChat = async ({offset = 0, limit = 150} = {}) => {
     try {
         return await loadChat({offset, limit});
     } catch (err) {
@@ -45,7 +47,7 @@ const getChat = async ({offset = 0, limit = 150} = {}) => {
     }
 };
 
-const broadcastChat = ({wss, list = []}) => {
+export const broadcastChat = ({wss, list = []}) => {
     try {
         wss.clients.forEach(client => {
             client.send(JSON.stringify({list}));
@@ -55,7 +57,3 @@ const broadcastChat = ({wss, list = []}) => {
         return Promise.reject(err);
     }
 };
-
-exports.getChat = getChat;
-exports.saveChat = saveChat;
-exports.broadcastChat = broadcastChat;
