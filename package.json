@@ -1,6 +1,6 @@
 {
   "name": "gt6-api.gutenprog.com",
-  "version": "6.1.0",
+  "version": "6.1.1",
   "description": "GutenProg.com site and api",
   "main": "index.js",
   "type": "module",
